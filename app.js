@@ -15,7 +15,9 @@ app.use('/api/mentors', mentorsRoutes);
 app.use('/api/students', studentsRoutes);
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/mentorStudentDB')
+const mongoUri = 'mongodb+srv://mentor-student-api:G9aHUCVJ0TS0m6zq@cluster0.1wjsvoo.mongodb.net/?retryWrites=true&w=majority';
+
+mongoose.connect(mongoUri)
   .then(() => {
     console.log('Connected to MongoDB');
   })
