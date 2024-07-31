@@ -18,6 +18,11 @@ app.use(bodyParser.json());
 app.use('/api/mentors', mentorsRoutes);
 app.use('/api/students', studentsRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.send('Mentor-Student API is running');
+});
+
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
