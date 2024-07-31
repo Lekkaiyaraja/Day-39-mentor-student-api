@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+// Load environment variables from .env file
+dotenv.config();
 
 const mentorsRoutes = require('./routes/mentors');
 const studentsRoutes = require('./routes/students');
@@ -15,9 +19,7 @@ app.use('/api/mentors', mentorsRoutes);
 app.use('/api/students', studentsRoutes);
 
 // MongoDB connection
-const mongoUri = 'mongodb+srv://mentor-student-api:G9aHUCVJ0TS0m6zq@cluster0.1wjsvoo.mongodb.net/?retryWrites=true&w=majority';
-
-mongoose.connect(mongoUri)
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
   })
